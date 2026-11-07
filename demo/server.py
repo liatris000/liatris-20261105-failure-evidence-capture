@@ -4,7 +4,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 class Handler(BaseHTTPRequestHandler):
-    def do_GET(self):
+    def do_GET(self) -> None:
         if self.path == "/flaky":
             body = json.dumps({"error": "upstream_maintenance", "retry_after": 30}).encode()
             self.send_response(503)
@@ -17,7 +17,7 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
-    def log_message(self, *args):
+    def log_message(self, *args: object) -> None:
         pass
 
 

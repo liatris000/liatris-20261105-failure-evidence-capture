@@ -9,7 +9,7 @@
 - Bash と curl(curl 8.5.0 と 8.7.1 で確認)
 - デモ用のローカルサーバーを動かすなら Python 3(標準ライブラリのみ)
 
-## 使い方
+## 動かし方
 
 ```bash
 EVIDENCE_DIR=evidence MAX_ATTEMPTS=3 ./capture-on-fail.sh URL [curl の追加引数...]
@@ -19,7 +19,7 @@ EVIDENCE_DIR=evidence MAX_ATTEMPTS=3 ./capture-on-fail.sh URL [curl の追加引
 - 失敗した試行だけ、`evidence/<UTC日時>-<PID>/attempt-N/` に応答ヘッダ・本文・ステータス・所要時間を保存する。最後まで失敗したら終了コード 1
 - `Authorization` / `Cookie` / `X-Api-Key` の値は、保存する前に `[REDACTED]` に置き換える
 
-## 動かし方(ローカルで失敗を再現する)
+### ローカルで失敗を再現する
 
 ```bash
 git clone https://github.com/liatris000/liatris-20261105-failure-evidence-capture.git
@@ -56,6 +56,10 @@ EVIDENCE_DIR=evidence/<実行ID>
 - 秘密情報の除去は、既知のヘッダ名(`Authorization` / `Cookie` / `X-Api-Key`)だけ。URL のクエリに入れたトークンや、応答の本文に含まれる秘密は消えない
 - 実際の外部 API での失敗では試していない(ローカルのデモサーバーだけ)
 - デモサーバーのポートは 8765 に固定している
+
+## 記事
+
+https://zenn.dev/liatris/articles/20261105-failure-evidence-capture
 
 ## ライセンス
 
